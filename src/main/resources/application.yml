@@ -1,0 +1,73 @@
+spring:
+  profiles:
+#    active: local
+    active: dev
+management:
+  health:
+    influxdb:
+      enabled: true
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+        exclude:
+        - env
+        - bean
+
+---
+spring:
+  profiles: local
+  influx2:
+    url: http://192.168.1.252:8086
+    username: influxdb
+    password: influx@!
+    token: ZFkC-eqryZu6-udYhwWdMft_bNX0t6Lt-nqTUH755JJPjXkL0x5KPynkbKrUAg1uBr7RQXVdAeJCYP3GOKBnZw==
+    org: WIZAI
+    bucket: KARI
+    logLevel: BODY
+    readTimeout: 5s
+    writeTimeout: 5s
+    connectTimeout: 5s
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: dev
+  influx2:
+    url: https://us-west-2-1.aws.cloud2.influxdata.com
+    username: typeofb@yahoo.com
+    password: 1qaz2wsx!@
+    token: _3rpK0A0lwrat-wSStGxi3X89ncWLbyqAvtDUMNdq7QoGHHs8AZL0ID_QiBs2Zgzvwp46wZNsLsz1UXDiUsP4g==
+    org: c5f0c899de9376d4
+    bucket: bank
+    logLevel: BODY
+    readTimeout: 5s
+    writeTimeout: 5s
+    connectTimeout: 5s
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: k8s
+  influx2:
+    url: ${INFLUX2_URL}
+    username: ${INFLUX2_USERNAME}
+    password: ${INFLUX2_PASSWORD}
+    token: ${INFLUX2_TOKEN}
+    org: ${INFLUX2_ORG}
+    bucket: ${INFLUX2_BUCKET}
+    logLevel: BODY
+    readTimeout: 5s
+    writeTimeout: 5s
+    connectTimeout: 5s
+
+server:
+  port: 8080
