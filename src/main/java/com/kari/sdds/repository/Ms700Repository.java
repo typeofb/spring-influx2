@@ -35,7 +35,7 @@ public class Ms700Repository {
         writeApi.writeMeasurements(WritePrecision.US, entities);
     }
 
-    public List<Ms700> findBytype(String type) {
+    public List<Ms700> findByType(String type) {
         List<Ms700> entities = new ArrayList<>();
         String query = "from(bucket:" + "\"" + bucket + "\")"
                 + "|> range(start: 0)"

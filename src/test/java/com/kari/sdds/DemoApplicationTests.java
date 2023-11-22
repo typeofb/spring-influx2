@@ -61,7 +61,7 @@ class DemoApplicationTests {
 	@Test
 	public void saveMs700Entity() throws Exception {
         Ms700Repository.save(Ms700Entity);
-        List<Ms700> entities = Ms700Repository.findBytype(Ms700Entity.getType());
+        List<Ms700> entities = Ms700Repository.findByType(Ms700Entity.getType());
         for (Ms700 entity : entities) {
             assertNotEquals(0, entity.getValue());
         }
@@ -70,7 +70,7 @@ class DemoApplicationTests {
     @Test
 	public void saveMs700Entities() throws Exception {
         Ms700Repository.save(Ms700Entities);
-        List<Ms700> entities = Ms700Repository.findBytype("WinSpd_WVc");
+        List<Ms700> entities = Ms700Repository.findByType("WinSpd_WVc");
         for (Ms700 entity : entities) {
             assertNotEquals(0, entity.getValue());
         }
@@ -78,7 +78,7 @@ class DemoApplicationTests {
 
     @Test
     public void readMs700Entities() throws Exception {
-        List<Ms700> entities = Ms700Repository.findBytype("t_hmp_Avg");
+        List<Ms700> entities = Ms700Repository.findByType("t_hmp_Avg");
         for (Ms700 entity : entities) {
             assertNotEquals(0, entity.getValue());
         }
